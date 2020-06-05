@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,16 +55,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BakeryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BakeryForm.Designer.cs">
+      <DependentUpon>BakeryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BakerySet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAuthorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuthorization.Designer.cs">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMagazine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMagazine.Designer.cs">
+      <DependentUpon>FormMagazine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPersonal.Designer.cs">
+      <DependentUpon>FormPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSales.Designer.cs">
+      <DependentUpon>FormSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSupply.Designer.cs">
+      <DependentUpon>FormSupply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MagazineSet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalSet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderSet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProvidersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvidersForm.Designer.cs">
+      <DependentUpon>ProvidersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesSet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKI_Project.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SKI_Project.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKI_Project.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKI_Project.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SKI_Project.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SupplySet.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>SKI_Project.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BakeryForm.resx">
+      <DependentUpon>BakeryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAuthorization.resx">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMagazine.resx">
+      <DependentUpon>FormMagazine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPersonal.resx">
+      <DependentUpon>FormPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSales.resx">
+      <DependentUpon>FormSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSupply.resx">
+      <DependentUpon>FormSupply.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +170,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ProvidersForm.resx">
+      <DependentUpon>ProvidersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,9 +185,34 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="SKI_Project.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SKI_Project.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SKI_Project.edmx.diagram">
+      <DependentUpon>SKI_Project.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SKI_Project.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SKI_Project.edmx</DependentUpon>
+      <LastGenOutput>SKI_Project.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SKI_Project.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SKI_Project.edmx</DependentUpon>
+      <LastGenOutput>SKI_Project.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

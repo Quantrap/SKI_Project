@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c6a6aa236e74ef7ba1751b2c47a9f52" Name="Diagram1">
+        <EntityTypeShape EntityType="SKI_ProjectModel.BakerySet" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.MagazineSet" Width="1.5" PointX="2.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.PersonalSet" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.ProviderSet" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.SalesSet" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.SupplySet" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKI_ProjectModel.Users" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="SKI_ProjectModel.FK_SalesSet_BakerySet" ManuallyRouted="false" />
+        <AssociationConnector Association="SKI_ProjectModel.FK_MagazineSet_MagazineSet" ManuallyRouted="false" />
+        <AssociationConnector Association="SKI_ProjectModel.FK_SalesSet_MagazineSet" ManuallyRouted="false" />
+        <AssociationConnector Association="SKI_ProjectModel.FK_SupplySet_MagazineSet" ManuallyRouted="false" />
+        <AssociationConnector Association="SKI_ProjectModel.FK_SupplySet_ProviderSet" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

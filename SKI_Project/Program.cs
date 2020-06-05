@@ -8,6 +8,7 @@ namespace SKI_Project
 {
     static class Program
     {
+        public static SKI_ProjectEntities5 bdSKI = new SKI_ProjectEntities5();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +17,7 @@ namespace SKI_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            Application.Run(new FormAuthorization());
         }
     }
 }

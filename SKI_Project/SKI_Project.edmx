@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SKI_ProjectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BakerySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Profit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MagazineSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdManager" Type="int" Nullable="false" />
+          <Property Name="Profit" Type="bigint" />
+          <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonalSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Post" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Magazine" Type="int" Nullable="false" />
+          <Property Name="Salary" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SalesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMagazine" Type="int" Nullable="false" />
+          <Property Name="IdBakery" Type="int" Nullable="false" />
+          <Property Name="Pieces" Type="float" Nullable="false" />
+          <Property Name="SumProfit" Type="bigint" />
+        </EntityType>
+        <EntityType Name="SupplySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProvider" Type="int" Nullable="false" />
+          <Property Name="IdMagazine" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pieces" Type="int" Nullable="false" />
+          <Property Name="Price" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MagazineSet_MagazineSet">
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="1" />
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagazineSet">
+              <PropertyRef Name="IdManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesSet_BakerySet">
+          <End Role="BakerySet" Type="Self.BakerySet" Multiplicity="1" />
+          <End Role="SalesSet" Type="Self.SalesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BakerySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesSet">
+              <PropertyRef Name="IdBakery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesSet_MagazineSet">
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="1" />
+          <End Role="SalesSet" Type="Self.SalesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagazineSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesSet">
+              <PropertyRef Name="IdMagazine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplySet_MagazineSet">
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="1" />
+          <End Role="SupplySet" Type="Self.SupplySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagazineSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplySet">
+              <PropertyRef Name="IdMagazine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplySet_ProviderSet">
+          <End Role="ProviderSet" Type="Self.ProviderSet" Multiplicity="1" />
+          <End Role="SupplySet" Type="Self.SupplySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplySet">
+              <PropertyRef Name="IdProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SKI_ProjectModelContainer">
+          <EntitySet Name="BakerySet" EntityType="Self.BakerySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagazineSet" EntityType="Self.MagazineSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderSet" EntityType="Self.ProviderSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesSet" EntityType="Self.SalesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplySet" EntityType="Self.SupplySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MagazineSet_MagazineSet" Association="Self.FK_MagazineSet_MagazineSet">
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesSet_BakerySet" Association="Self.FK_SalesSet_BakerySet">
+            <End Role="BakerySet" EntitySet="BakerySet" />
+            <End Role="SalesSet" EntitySet="SalesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesSet_MagazineSet" Association="Self.FK_SalesSet_MagazineSet">
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+            <End Role="SalesSet" EntitySet="SalesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplySet_MagazineSet" Association="Self.FK_SupplySet_MagazineSet">
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+            <End Role="SupplySet" EntitySet="SupplySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplySet_ProviderSet" Association="Self.FK_SupplySet_ProviderSet">
+            <End Role="ProviderSet" EntitySet="ProviderSet" />
+            <End Role="SupplySet" EntitySet="SupplySet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SKI_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BakerySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Profit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SalesSet" Relationship="Self.FK_SalesSet_BakerySet" FromRole="BakerySet" ToRole="SalesSet" />
+        </EntityType>
+        <EntityType Name="MagazineSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdManager" Type="Int32" Nullable="false" />
+          <Property Name="Profit" Type="Int64" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PersonalSet" Relationship="Self.FK_MagazineSet_MagazineSet" FromRole="MagazineSet" ToRole="PersonalSet" />
+          <NavigationProperty Name="SalesSet" Relationship="Self.FK_SalesSet_MagazineSet" FromRole="MagazineSet" ToRole="SalesSet" />
+          <NavigationProperty Name="SupplySet" Relationship="Self.FK_SupplySet_MagazineSet" FromRole="MagazineSet" ToRole="SupplySet" />
+        </EntityType>
+        <EntityType Name="PersonalSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Magazine" Type="Int32" Nullable="false" />
+          <Property Name="Salary" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="MagazineSet" Relationship="Self.FK_MagazineSet_MagazineSet" FromRole="PersonalSet" ToRole="MagazineSet" />
+        </EntityType>
+        <EntityType Name="ProviderSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SupplySet" Relationship="Self.FK_SupplySet_ProviderSet" FromRole="ProviderSet" ToRole="SupplySet" />
+        </EntityType>
+        <EntityType Name="SalesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMagazine" Type="Int32" Nullable="false" />
+          <Property Name="IdBakery" Type="Int32" Nullable="false" />
+          <Property Name="Pieces" Type="Double" Nullable="false" />
+          <Property Name="SumProfit" Type="Int64" />
+          <NavigationProperty Name="BakerySet" Relationship="Self.FK_SalesSet_BakerySet" FromRole="SalesSet" ToRole="BakerySet" />
+          <NavigationProperty Name="MagazineSet" Relationship="Self.FK_SalesSet_MagazineSet" FromRole="SalesSet" ToRole="MagazineSet" />
+        </EntityType>
+        <EntityType Name="SupplySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProvider" Type="Int32" Nullable="false" />
+          <Property Name="IdMagazine" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pieces" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="MagazineSet" Relationship="Self.FK_SupplySet_MagazineSet" FromRole="SupplySet" ToRole="MagazineSet" />
+          <NavigationProperty Name="ProviderSet" Relationship="Self.FK_SupplySet_ProviderSet" FromRole="SupplySet" ToRole="ProviderSet" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SalesSet_BakerySet">
+          <End Role="BakerySet" Type="Self.BakerySet" Multiplicity="1" />
+          <End Role="SalesSet" Type="Self.SalesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BakerySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesSet">
+              <PropertyRef Name="IdBakery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagazineSet_MagazineSet">
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="1" />
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagazineSet">
+              <PropertyRef Name="IdManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesSet_MagazineSet">
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="1" />
+          <End Role="SalesSet" Type="Self.SalesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagazineSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesSet">
+              <PropertyRef Name="IdMagazine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplySet_MagazineSet">
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="1" />
+          <End Role="SupplySet" Type="Self.SupplySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagazineSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplySet">
+              <PropertyRef Name="IdMagazine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplySet_ProviderSet">
+          <End Role="ProviderSet" Type="Self.ProviderSet" Multiplicity="1" />
+          <End Role="SupplySet" Type="Self.SupplySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplySet">
+              <PropertyRef Name="IdProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SKI_ProjectEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BakerySet" EntityType="Self.BakerySet" />
+          <EntitySet Name="MagazineSet" EntityType="Self.MagazineSet" />
+          <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" />
+          <EntitySet Name="ProviderSet" EntityType="Self.ProviderSet" />
+          <EntitySet Name="SalesSet" EntityType="Self.SalesSet" />
+          <EntitySet Name="SupplySet" EntityType="Self.SupplySet" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_SalesSet_BakerySet" Association="Self.FK_SalesSet_BakerySet">
+            <End Role="BakerySet" EntitySet="BakerySet" />
+            <End Role="SalesSet" EntitySet="SalesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagazineSet_MagazineSet" Association="Self.FK_MagazineSet_MagazineSet">
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesSet_MagazineSet" Association="Self.FK_SalesSet_MagazineSet">
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+            <End Role="SalesSet" EntitySet="SalesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplySet_MagazineSet" Association="Self.FK_SupplySet_MagazineSet">
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+            <End Role="SupplySet" EntitySet="SupplySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplySet_ProviderSet" Association="Self.FK_SupplySet_ProviderSet">
+            <End Role="ProviderSet" EntitySet="ProviderSet" />
+            <End Role="SupplySet" EntitySet="SupplySet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SKI_ProjectModelContainer" CdmEntityContainer="SKI_ProjectEntities5">
+          <EntitySetMapping Name="BakerySet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.BakerySet">
+              <MappingFragment StoreEntitySet="BakerySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagazineSet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.MagazineSet">
+              <MappingFragment StoreEntitySet="MagazineSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdManager" ColumnName="IdManager" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalSet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.PersonalSet">
+              <MappingFragment StoreEntitySet="PersonalSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Magazine" ColumnName="Magazine" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderSet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.ProviderSet">
+              <MappingFragment StoreEntitySet="ProviderSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesSet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.SalesSet">
+              <MappingFragment StoreEntitySet="SalesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMagazine" ColumnName="IdMagazine" />
+                <ScalarProperty Name="IdBakery" ColumnName="IdBakery" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="SumProfit" ColumnName="SumProfit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplySet">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.SupplySet">
+              <MappingFragment StoreEntitySet="SupplySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProvider" ColumnName="IdProvider" />
+                <ScalarProperty Name="IdMagazine" ColumnName="IdMagazine" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SKI_ProjectModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
