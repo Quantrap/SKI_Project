@@ -133,6 +133,7 @@
             this.Controls.Add(this.buttonPersonal);
             this.Controls.Add(this.pictureLogo);
             this.Name = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();

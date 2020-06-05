@@ -57,6 +57,8 @@
             this.textBoxStatus = new System.Windows.Forms.TextBox();
             this.labelStatus = new System.Windows.Forms.Label();
             this.textBoxMagazine = new System.Windows.Forms.TextBox();
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFirstName
@@ -226,7 +228,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(520, 333);
+            this.buttonAdd.Location = new System.Drawing.Point(520, 365);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 40);
             this.buttonAdd.TabIndex = 15;
@@ -236,7 +238,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(601, 333);
+            this.buttonEdit.Location = new System.Drawing.Point(601, 365);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(84, 41);
             this.buttonEdit.TabIndex = 16;
@@ -246,7 +248,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(691, 334);
+            this.buttonDel.Location = new System.Drawing.Point(691, 365);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(75, 40);
             this.buttonDel.TabIndex = 17;
@@ -277,11 +279,21 @@
             this.textBoxMagazine.Size = new System.Drawing.Size(132, 20);
             this.textBoxMagazine.TabIndex = 20;
             // 
+            // pictureLogo
+            // 
+            this.pictureLogo.Image = global::SKI_Project.Properties.Resources.logo;
+            this.pictureLogo.Location = new System.Drawing.Point(150, 333);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(224, 89);
+            this.pictureLogo.TabIndex = 32;
+            this.pictureLogo.TabStop = false;
+            // 
             // FormPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 411);
+            this.ClientSize = new System.Drawing.Size(800, 469);
+            this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.textBoxMagazine);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.textBoxStatus);
@@ -303,8 +315,10 @@
             this.Controls.Add(this.textBoxMiddleName);
             this.Controls.Add(this.textBoxFirstName);
             this.Name = "FormPersonal";
-            this.Text = "FormPersonal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Персонал";
             this.Load += new System.EventHandler(this.FormPersonal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,5 +355,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.PictureBox pictureLogo;
     }
 }

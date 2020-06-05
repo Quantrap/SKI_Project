@@ -39,6 +39,8 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // listView_Providers
@@ -135,11 +137,21 @@
             this.labelPhone.TabIndex = 33;
             this.labelPhone.Text = "Телефон";
             // 
+            // pictureLogo
+            // 
+            this.pictureLogo.Image = global::SKI_Project.Properties.Resources.logo;
+            this.pictureLogo.Location = new System.Drawing.Point(13, 326);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(224, 89);
+            this.pictureLogo.TabIndex = 34;
+            this.pictureLogo.TabStop = false;
+            // 
             // ProvidersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.textBoxName);
@@ -149,7 +161,9 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.listView_Providers);
             this.Name = "ProvidersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поставщики";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +182,6 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.PictureBox pictureLogo;
     }
 }

@@ -38,11 +38,13 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxBakery
@@ -129,6 +131,14 @@
             this.columnHeader3.Text = "Магазин";
             this.columnHeader3.Width = 90;
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Количество";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Прибыль";
+            // 
             // buttonDel
             // 
             this.buttonDel.Location = new System.Drawing.Point(713, 326);
@@ -159,19 +169,21 @@
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // columnHeader4
+            // pictureLogo
             // 
-            this.columnHeader4.Text = "Количество";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Прибыль";
+            this.pictureLogo.Image = global::SKI_Project.Properties.Resources.logo;
+            this.pictureLogo.Location = new System.Drawing.Point(12, 326);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(224, 89);
+            this.pictureLogo.TabIndex = 33;
+            this.pictureLogo.TabStop = false;
             // 
             // FormSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonEdit);
@@ -183,7 +195,9 @@
             this.Controls.Add(this.comboBoxMagazine);
             this.Controls.Add(this.comboBoxBakery);
             this.Name = "FormSales";
-            this.Text = "FormSales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Продажи";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +220,6 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.PictureBox pictureLogo;
     }
 }

@@ -41,6 +41,8 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonProfit = new System.Windows.Forms.Button();
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // listView_Magazine
@@ -154,11 +156,21 @@
             this.buttonProfit.UseVisualStyleBackColor = true;
             this.buttonProfit.Click += new System.EventHandler(this.buttonProfit_Click);
             // 
+            // pictureLogo
+            // 
+            this.pictureLogo.Image = global::SKI_Project.Properties.Resources.logo;
+            this.pictureLogo.Location = new System.Drawing.Point(12, 326);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(224, 89);
+            this.pictureLogo.TabIndex = 32;
+            this.pictureLogo.TabStop = false;
+            // 
             // FormMagazine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.ClientSize = new System.Drawing.Size(800, 433);
+            this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.buttonProfit);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonAdd);
@@ -169,7 +181,9 @@
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.listView_Magazine);
             this.Name = "FormMagazine";
-            this.Text = "FormMagazine";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Магазины";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +204,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button buttonProfit;
+        private System.Windows.Forms.PictureBox pictureLogo;
     }
 }

@@ -115,6 +115,7 @@
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelTitle);
             this.Name = "FormAuthorization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.FormAuthorization_Load);
             this.ResumeLayout(false);

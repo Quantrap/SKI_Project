@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.listView_Bakery = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -36,9 +39,8 @@
             this.textBoxProfit = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelProfit = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // listView_Bakery
@@ -49,7 +51,7 @@
             this.columnHeader3});
             this.listView_Bakery.FullRowSelect = true;
             this.listView_Bakery.GridLines = true;
-            this.listView_Bakery.Location = new System.Drawing.Point(199, 37);
+            this.listView_Bakery.Location = new System.Drawing.Point(199, 12);
             this.listView_Bakery.MultiSelect = false;
             this.listView_Bakery.Name = "listView_Bakery";
             this.listView_Bakery.Size = new System.Drawing.Size(589, 308);
@@ -57,6 +59,21 @@
             this.listView_Bakery.UseCompatibleStateImageBehavior = false;
             this.listView_Bakery.View = System.Windows.Forms.View.Details;
             this.listView_Bakery.SelectedIndexChanged += new System.EventHandler(this.listView_Bakery_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 56;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Название";
+            this.columnHeader2.Width = 92;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Прибыль";
+            this.columnHeader3.Width = 90;
             // 
             // buttonDel
             // 
@@ -120,26 +137,21 @@
             this.labelProfit.TabIndex = 30;
             this.labelProfit.Text = "Прибыль (за 1 штуку или 1 кг)";
             // 
-            // columnHeader1
+            // pictureLogo
             // 
-            this.columnHeader1.Text = "Id";
-            this.columnHeader1.Width = 56;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Название";
-            this.columnHeader2.Width = 92;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Прибыль";
-            this.columnHeader3.Width = 90;
+            this.pictureLogo.Image = global::SKI_Project.Properties.Resources.logo;
+            this.pictureLogo.Location = new System.Drawing.Point(12, 326);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Size = new System.Drawing.Size(224, 89);
+            this.pictureLogo.TabIndex = 31;
+            this.pictureLogo.TabStop = false;
             // 
             // BakeryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 428);
+            this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.labelProfit);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.textBoxProfit);
@@ -149,7 +161,9 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.listView_Bakery);
             this.Name = "BakeryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изделия";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +182,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.PictureBox pictureLogo;
     }
 }
