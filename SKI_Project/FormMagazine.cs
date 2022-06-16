@@ -32,7 +32,8 @@ namespace SKI_Project
             else
             {
                 comboBoxManager.SelectedItem = null;
-                textBoxCity.Text = "";
+                comboBoxManager.SelectedItem = null;
+                comboBoxManager.SelectedItem = null;
             }
         }
         void ShowManager()
